@@ -194,9 +194,9 @@ class NDWIAnalyzer:
     def calculate_ndwi(self, image):
         """Calculate NDWI for a single image"""
         try:
-            # Select bands
-            GREEN = image.select('B3')  # Green band
-            NIR = image.select('B8')    # NIR band
+            # Select bands and normalize to 0-1 scale (Sentinel-2 data is in 0-10000 scale)
+            GREEN = image.select('B3').divide(10000)  # Green band
+            NIR = image.select('B8').divide(10000)    # NIR band
             
             # Calculate NDWI: (Green - NIR)/(Green + NIR)
             ndwi = GREEN.subtract(NIR).divide(GREEN.add(NIR))

@@ -43,9 +43,34 @@ Where:
 - GREEN = Green reflectance (Sentinel-2 Band 3)
 - NIR = Near-infrared reflectance (Sentinel-2 Band 8)
 
-Reference:
-McFeeters, S.K. (1996). The use of the Normalized Difference Water Index (NDWI) in the delineation of open water features. International Journal of Remote Sensing, 17(7), 1425-1432.
-https://doi.org/10.1080/01431169608948714
+### Data Scaling and Interpretation
+
+#### Sentinel-2 Data Scaling
+- Raw Sentinel-2 bands are scaled from 0 to 10000
+- Bands are normalized to 0-1 scale by dividing by 10000 before NDWI calculation
+- This scaling ensures proper NDWI value ranges and comparability with scientific literature
+
+#### NDWI Value Ranges
+- Theoretical range: -1 to +1
+- Typical ranges for different conditions:
+  * > 0.3: Open water or very high moisture content
+  * 0.0 to 0.3: High vegetation water content
+  * -0.1 to 0.0: Moderate vegetation water content
+  * -0.3 to -0.1: Low vegetation water content
+  * < -0.3: Very dry vegetation or bare soil
+
+#### Interpretation Guidelines
+- Higher values indicate higher water content or open water
+- Values vary with:
+  * Vegetation type and density
+  * Seasonal changes
+  * Soil moisture conditions
+  * Recent precipitation
+- Consider local conditions when interpreting values
+- Compare with historical data when possible
+- Account for environmental factors
+
+Reference: McFeeters, S.K. (1996). The use of the Normalized Difference Water Index (NDWI) in the delineation of open water features. International Journal of Remote Sensing, 17(7), 1425-1432.
 
 ## Requirements
 
@@ -132,16 +157,6 @@ The tool generates an `output` folder containing three main components:
   - Quality flags
 - Field geometry information
 - Version information and processing timestamps
-
-## NDWI Value Interpretation
-
-| NDWI Range | Interpretation |
-|------------|---------------|
-| > 0.3      | Open water or very high moisture content |
-| 0.0 to 0.3 | High vegetation water content |
-| -0.1 to 0.0| Moderate vegetation water content |
-| -0.3 to -0.1| Low vegetation water content |
-| < -0.3     | Very dry vegetation or bare soil |
 
 ## Sample Data
 
