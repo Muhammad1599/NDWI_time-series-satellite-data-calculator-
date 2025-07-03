@@ -41,7 +41,11 @@ env/
 output/*.csv
 output/*.png
 output/*.json
+!output/.gitkeep
 
 # Earth Engine authentication
 .config/
-.ipynb_checkpoints/ 
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store 
