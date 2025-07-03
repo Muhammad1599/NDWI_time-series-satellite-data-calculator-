@@ -42,6 +42,9 @@ output/*.csv
 output/*.png
 output/*.json
 !output/.gitkeep
+!output/ndwi_results_20250703_195557.csv
+!output/ndwi_timeseries_20250703_195557.png
+!output/analysis_metadata_20250703_195557.json
 
 # Earth Engine authentication
 .config/
